@@ -1,0 +1,13 @@
+export enum MuscleTargetType {
+  CHEST = "CHEST",
+  SHOULDER = "SHOULDER",
+  FOREARM = "FOREARM",
+  BICEPS = "BICEPS",
+  TRICEPS = "TRICEPS",
+  ABDOMEN = "ABDOMEN",
+  BACK = "BACK",
+  NECK = "NECK",
+  QUADRICEPS = "QUADRICEPS",
+  HAMSTRING = "HAMSTRING",
+  CALF = "CALF",
+}
