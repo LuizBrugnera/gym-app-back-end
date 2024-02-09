@@ -12,15 +12,17 @@ import { StudentDataCheck } from "./student-data-check.entity";
 import { Workout } from "./workout.entity";
 import { Diet } from "./diet.entity";
 import { Feedback } from "./feedback.entity";
+import { DateTransformer } from "../../common/transformers/date.transformer";
+import { SexType } from "../../common/enums/sex-type.enum";
 
 @Entity("student")
-@Index("idx_student_trainer_id", ["trainerId"])
+@Index("idx_student_trainer_id", ["trainer_id"])
 export class Student {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ type: "uuid" })
-  trainerId: string;
+  trainer_id: string;
 
   @ManyToOne(() => Trainer, (trainer) => trainer.students)
   @JoinColumn({ name: "trainer_id" })
@@ -35,8 +37,14 @@ export class Student {
   @Column({ type: "char", length: 60 })
   password_hash: string;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   birthdate: Date;
+
+  @Column({
+    type: "enum",
+    enum: SexType,
+  })
+  sex: SexType;
 
   @OneToMany(
     () => StudentDataCheck,

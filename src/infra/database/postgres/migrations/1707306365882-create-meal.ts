@@ -7,10 +7,10 @@ export class CreateMeal1707306365882 implements MigrationInterface {
             
             CREATE TABLE "meal" (
                 "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
-                "dietId" UUID,
+                "diet_id" UUID,
                 "eating_time" "meal_time_type_enum" NOT NULL,
                 CONSTRAINT "PK_meal_id" PRIMARY KEY ("id"),
-                CONSTRAINT "FK_meal_dietId" FOREIGN KEY ("dietId") REFERENCES "diet"("id") ON DELETE CASCADE
+                CONSTRAINT "FK_meal_diet_id" FOREIGN KEY ("diet_id") REFERENCES "diet"("id") ON DELETE CASCADE
             );
         `);
   }

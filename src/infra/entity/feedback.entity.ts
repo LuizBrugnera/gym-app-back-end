@@ -6,6 +6,7 @@ import {
   JoinColumn,
 } from "typeorm";
 import { Student } from "./student.entity";
+import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("feedback")
 export class Feedback {
@@ -13,7 +14,7 @@ export class Feedback {
   id: string;
 
   @Column({ type: "uuid" })
-  studentId: string;
+  student_id: string;
 
   @ManyToOne(() => Student, (student) => student.feedbacks, {
     onDelete: "CASCADE",
@@ -23,6 +24,9 @@ export class Feedback {
 
   @Column("text")
   text: string;
+
+  @Column({ type: "date", transformer: new DateTransformer() })
+  date: Date;
 
   @Column({ length: 255, nullable: true })
   image_url: string | null;

@@ -7,16 +7,16 @@ export class CreateWorkout1707305784840 implements MigrationInterface {
             
             CREATE TABLE "workout" (
                 "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
-                "studentId" UUID,
+                "student_id" UUID,
                 "title" VARCHAR(255) NOT NULL,
                 "description" TEXT,
                 "date_start" DATE NOT NULL,
                 "date_end" DATE NOT NULL,
                 "status" "workout_status_type_enum" NOT NULL,
                 CONSTRAINT "PK_workout_id" PRIMARY KEY ("id"),
-                CONSTRAINT "FK_workout_studentId" FOREIGN KEY ("studentId") REFERENCES "student"("id") ON DELETE CASCADE
+                CONSTRAINT "FK_workout_student_id" FOREIGN KEY ("student_id") REFERENCES "student"("id") ON DELETE CASCADE
             );
-            CREATE INDEX "idx_workout_student_id_status" ON "workout" ("studentId", "status");
+            CREATE INDEX "idx_workout_student_id_status" ON "workout" ("student_id", "status");
         `);
   }
 

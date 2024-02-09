@@ -7,7 +7,7 @@ import {
   OneToMany,
 } from "typeorm";
 import { Diet } from "./diet.entity";
-import { MealTimeType } from "src/common/enums/meal-time-type";
+import { MealTimeType } from "../../common/enums/meal-time-type.enum";
 import { FoodMeal } from "./food_meal.entity";
 
 @Entity("meal")
@@ -16,7 +16,7 @@ export class Meal {
   id: string;
 
   @Column({ type: "uuid" })
-  dietId: string;
+  diet_id: string;
 
   @ManyToOne(() => Diet, (diet) => diet.meals, {
     onDelete: "CASCADE",

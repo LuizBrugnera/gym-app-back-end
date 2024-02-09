@@ -7,16 +7,17 @@ import {
   Index,
 } from "typeorm";
 import { Student } from "./student.entity";
-import { SexType } from "src/common/enums/sex-type.enum";
+import { SexType } from "../../common/enums/sex-type.enum";
+import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("student_data_check")
-@Index("idx_student_data_check_student_id", ["studentId"])
+@Index("idx_student_data_check_student_id", ["student_id"])
 export class StudentDataCheck {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ type: "uuid" })
-  studentId: string;
+  student_id: string;
 
   @ManyToOne(() => Student, (student) => student.studentDataChecks, {
     onDelete: "CASCADE",
@@ -24,7 +25,7 @@ export class StudentDataCheck {
   @JoinColumn({ name: "student_id" })
   student: Student;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   date: Date;
 
   @Column({ type: "int" })

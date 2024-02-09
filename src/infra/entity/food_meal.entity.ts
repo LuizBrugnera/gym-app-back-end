@@ -14,7 +14,7 @@ export class FoodMeal {
   id: string;
 
   @Column({ type: "uuid" })
-  mealId: string;
+  meal_id: string;
 
   @ManyToOne(() => Meal, (meal) => meal.foodMeals, {
     onDelete: "CASCADE",
@@ -23,7 +23,7 @@ export class FoodMeal {
   meal: Meal;
 
   @Column({ type: "uuid" })
-  foodId: string;
+  food_id: string;
 
   @ManyToOne(() => Food, (food) => food.foodMeals, {
     onDelete: "CASCADE",

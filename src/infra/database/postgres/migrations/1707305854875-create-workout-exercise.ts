@@ -5,16 +5,16 @@ export class CreateWorkoutExercise1707305854875 implements MigrationInterface {
     await queryRunner.query(`
             CREATE TABLE "workout_exercise" (
                 "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
-                "workoutId" UUID,
-                "exerciseId" UUID,
+                "workout_id" UUID,
+                "exercise_id" UUID,
                 "sets" INT NOT NULL,
                 "rest" INTERVAL NOT NULL,
                 "description" TEXT,
                 CONSTRAINT "PK_workout_exercise_id" PRIMARY KEY ("id"),
-                CONSTRAINT "FK_workout_exercise_workoutId" FOREIGN KEY ("workoutId") REFERENCES "workout"("id") ON DELETE CASCADE,
-                CONSTRAINT "FK_workout_exercise_exerciseId" FOREIGN KEY ("exerciseId") REFERENCES "exercise"("id") ON DELETE CASCADE
+                CONSTRAINT "FK_workout_exercise_workout_id" FOREIGN KEY ("workout_id") REFERENCES "workout"("id") ON DELETE CASCADE,
+                CONSTRAINT "FK_workout_exercise_exercise_id" FOREIGN KEY ("exercise_id") REFERENCES "exercise"("id") ON DELETE CASCADE
             );
-            CREATE INDEX "idx_workout_exercise_workout_id" ON "workout_exercise" ("workoutId");
+            CREATE INDEX "idx_workout_exercise_workout_id" ON "workout_exercise" ("workout_id");
         `);
   }
 

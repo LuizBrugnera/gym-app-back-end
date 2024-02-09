@@ -10,13 +10,13 @@ import { Workout } from "./workout.entity";
 import { Exercise } from "./exercise.entity";
 
 @Entity("workout_exercise")
-@Index("idx_workout_exercise_workout_id", ["workoutId"])
+@Index("idx_workout_exercise_workout_id", ["workout_id"])
 export class WorkoutExercise {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ type: "uuid" })
-  workoutId: string;
+  workout_id: string;
 
   @ManyToOne(() => Workout, (workout) => workout.workoutExercises, {
     onDelete: "CASCADE",
@@ -25,7 +25,7 @@ export class WorkoutExercise {
   workout: Workout;
 
   @Column({ type: "uuid" })
-  exerciseId: string;
+  exercise_id: string;
 
   @ManyToOne(() => Exercise, (exercise) => exercise.workoutExercises, {
     onDelete: "CASCADE",

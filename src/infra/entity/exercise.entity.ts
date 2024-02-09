@@ -1,5 +1,5 @@
-import { ExerciseType } from "src/common/enums/exercise-type.enum";
-import { MuscleTargetType } from "src/common/enums/muscle-target-type.enum";
+import { ExerciseType } from "../../common/enums/exercise-type.enum";
+import { MuscleTargetType } from "../../common/enums/muscle-target-type.enum";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { WorkoutExercise } from "./workout-exercise.entity";
 

@@ -8,17 +8,18 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Student } from "./student.entity";
-import { StatusType } from "src/common/enums/status-type.enum";
+import { StatusType } from "../../common/enums/status-type.enum";
 import { WorkoutExercise } from "./workout-exercise.entity";
+import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("workout")
-@Index("idx_workout_student_id_status", ["studentId", "status"])
+@Index("idx_workout_student_id_status", ["student_id", "status"])
 export class Workout {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ type: "uuid" })
-  studentId: string;
+  student_id: string;
 
   @ManyToOne(() => Student, (student) => student.workouts, {
     onDelete: "CASCADE",
@@ -32,10 +33,10 @@ export class Workout {
   @Column("text", { nullable: true })
   description: string | null;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   date_start: Date;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   date_end: Date;
 
   @Column({

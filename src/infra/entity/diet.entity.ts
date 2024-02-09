@@ -8,17 +8,18 @@ import {
   OneToMany,
 } from "typeorm";
 import { Student } from "./student.entity";
-import { StatusType } from "src/common/enums/status-type.enum";
+import { StatusType } from "../../common/enums/status-type.enum";
 import { Meal } from "./meal.entity";
+import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("diet")
-@Index("idx_diet_student_id_status", ["studentId", "status"])
+@Index("idx_diet_student_id_status", ["student_id", "status"])
 export class Diet {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ type: "uuid" })
-  studentId: string;
+  student_id: string;
 
   @ManyToOne(() => Student, (student) => student.diets, {
     onDelete: "CASCADE",
@@ -32,10 +33,10 @@ export class Diet {
   @Column("text", { nullable: true })
   description: string | null;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   date_start: Date;
 
-  @Column({ type: "date" })
+  @Column({ type: "date", transformer: new DateTransformer() })
   date_end: Date;
 
   @Column({
