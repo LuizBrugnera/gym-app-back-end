@@ -13,8 +13,8 @@ export class FoodMeal {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  meal_id: string;
+  @Column({ type: "uuid", name: "meal_id" })
+  mealId: string;
 
   @ManyToOne(() => Meal, (meal) => meal.foodMeals, {
     onDelete: "CASCADE",
@@ -22,8 +22,8 @@ export class FoodMeal {
   @JoinColumn({ name: "meal_id" })
   meal: Meal;
 
-  @Column({ type: "uuid" })
-  food_id: string;
+  @Column({ type: "uuid", name: "food_id" })
+  foodId: string;
 
   @ManyToOne(() => Food, (food) => food.foodMeals, {
     onDelete: "CASCADE",

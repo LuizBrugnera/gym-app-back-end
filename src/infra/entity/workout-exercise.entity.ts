@@ -15,8 +15,8 @@ export class WorkoutExercise {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  workout_id: string;
+  @Column({ type: "uuid", name: "workout_id" })
+  workoutId: string;
 
   @ManyToOne(() => Workout, (workout) => workout.workoutExercises, {
     onDelete: "CASCADE",
@@ -24,8 +24,8 @@ export class WorkoutExercise {
   @JoinColumn({ name: "workout_id" })
   workout: Workout;
 
-  @Column({ type: "uuid" })
-  exercise_id: string;
+  @Column({ type: "uuid", name: "exercise_id" })
+  exerciseId: string;
 
   @ManyToOne(() => Exercise, (exercise) => exercise.workoutExercises, {
     onDelete: "CASCADE",

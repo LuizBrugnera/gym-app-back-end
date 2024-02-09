@@ -18,8 +18,8 @@ export class Workout {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  student_id: string;
+  @Column({ type: "uuid", name: "student_id" })
+  studentId: string;
 
   @ManyToOne(() => Student, (student) => student.workouts, {
     onDelete: "CASCADE",

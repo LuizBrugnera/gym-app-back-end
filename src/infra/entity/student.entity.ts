@@ -21,8 +21,8 @@ export class Student {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  trainer_id: string;
+  @Column({ type: "uuid", name: "trainer_id" })
+  trainerId: string;
 
   @ManyToOne(() => Trainer, (trainer) => trainer.students)
   @JoinColumn({ name: "trainer_id" })

@@ -15,8 +15,8 @@ export class Meal {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  diet_id: string;
+  @Column({ type: "uuid", name: "diet_id" })
+  dietId: string;
 
   @ManyToOne(() => Diet, (diet) => diet.meals, {
     onDelete: "CASCADE",

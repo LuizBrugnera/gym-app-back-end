@@ -16,8 +16,8 @@ export class StudentDataCheck {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column({ type: "uuid" })
-  student_id: string;
+  @Column({ type: "uuid", name: "student_id" })
+  studentId: string;
 
   @ManyToOne(() => Student, (student) => student.studentDataChecks, {
     onDelete: "CASCADE",
