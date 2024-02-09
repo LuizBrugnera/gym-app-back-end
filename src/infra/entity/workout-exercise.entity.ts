@@ -10,7 +10,7 @@ import { Workout } from "./workout.entity";
 import { Exercise } from "./exercise.entity";
 
 @Entity("workout_exercise")
-@Index("idx_workout_exercise_workout_id", ["workout_id"])
+@Index("idx_workout_exercise_workout_id", ["workoutId"])
 export class WorkoutExercise {
   @PrimaryGeneratedColumn("uuid")
   id: string;

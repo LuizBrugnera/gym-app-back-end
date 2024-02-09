@@ -13,7 +13,7 @@ import { WorkoutExercise } from "./workout-exercise.entity";
 import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("workout")
-@Index("idx_workout_student_id_status", ["student_id", "status"])
+@Index("idx_workout_student_id_status", ["studentId", "status"])
 export class Workout {
   @PrimaryGeneratedColumn("uuid")
   id: string;

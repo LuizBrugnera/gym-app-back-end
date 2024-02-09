@@ -16,7 +16,7 @@ import { DateTransformer } from "../../common/transformers/date.transformer";
 import { SexType } from "../../common/enums/sex-type.enum";
 
 @Entity("student")
-@Index("idx_student_trainer_id", ["trainer_id"])
+@Index("idx_student_trainer_id", ["trainerId"])
 export class Student {
   @PrimaryGeneratedColumn("uuid")
   id: string;

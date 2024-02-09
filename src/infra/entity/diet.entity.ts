@@ -13,7 +13,7 @@ import { Meal } from "./meal.entity";
 import { DateTransformer } from "../../common/transformers/date.transformer";
 
 @Entity("diet")
-@Index("idx_diet_student_id_status", ["student_id", "status"])
+@Index("idx_diet_student_id_status", ["studentId", "status"])
 export class Diet {
   @PrimaryGeneratedColumn("uuid")
   id: string;
