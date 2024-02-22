@@ -44,7 +44,7 @@ describe("TrainerResolver", () => {
     const output: Trainer = {
       id: "1",
       ...input,
-      password_hash: "hashed",
+      passwordHash: "hashed",
       birthdate: input.birthdate,
       students: [],
     };
@@ -60,7 +60,7 @@ describe("TrainerResolver", () => {
         id: "1",
         name: "John Doe",
         email: "john@example.com",
-        password_hash: "hashed",
+        passwordHash: "hashed",
         birthdate: new Date("1990-01-01"),
         students: [],
       },
@@ -77,7 +77,7 @@ describe("TrainerResolver", () => {
       id,
       name: "John Doe",
       email: "john@example.com",
-      password_hash: "hashed",
+      passwordHash: "hashed",
       birthdate: new Date("1990-01-01"),
       students: [],
     };
@@ -94,7 +94,7 @@ describe("TrainerResolver", () => {
       name: "Lane Doe",
       ...input,
       email: "jane@example.com",
-      password_hash: "hashed",
+      passwordHash: "hashed",
       birthdate: new Date("1990-01-01"),
       students: [],
     };
@@ -110,7 +110,7 @@ describe("TrainerResolver", () => {
       id,
       name: "John Doe",
       email: "john@example.com",
-      password_hash: "hashed",
+      passwordHash: "hashed",
       birthdate: new Date("1990-01-01"),
       students: [],
     };

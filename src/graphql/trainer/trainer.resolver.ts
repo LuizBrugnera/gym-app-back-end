@@ -3,6 +3,7 @@ import { TrainerService } from "./trainer.service";
 import { CreateTrainerInput } from "./dto/create-trainer.input";
 import { UpdateTrainerInput } from "./dto/update-trainer.input";
 import { TrainerObject } from "./object/trainer.object";
+import { DeleteObject } from "../../common/objects/delete.object";
 
 @Resolver(() => TrainerObject)
 export class TrainerResolver {
@@ -20,7 +21,7 @@ export class TrainerResolver {
     return this.trainerService.findAll();
   }
 
-  @Query(() => TrainerObject, { name: "trainer_by_id" })
+  @Query(() => TrainerObject, { name: "trainerById" })
   findOneById(@Args("id") id: string) {
     return this.trainerService.findOneById(id);
   }
@@ -35,7 +36,7 @@ export class TrainerResolver {
     );
   }
 
-  @Mutation(() => TrainerObject)
+  @Mutation(() => DeleteObject)
   removeTrainer(@Args("id") id: string) {
     return this.trainerService.remove(id);
   }

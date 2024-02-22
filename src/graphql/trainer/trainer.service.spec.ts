@@ -51,7 +51,7 @@ describe("TrainerService", () => {
       const expectedCreateArgument = {
         name: createTrainerInput.name,
         email: createTrainerInput.email,
-        password_hash: expect.any(String),
+        passwordHash: expect.any(String),
         birthdate: createTrainerInput.birthdate,
       };
 
@@ -83,7 +83,7 @@ describe("TrainerService", () => {
           id: "1",
           name: "John Doe",
           email: "john@example.com",
-          password_hash: "hashedpassword",
+          passwordHash: "hashedpassword",
           birthdate: new Date("1990-01-01"),
           students: [],
         },
@@ -91,7 +91,7 @@ describe("TrainerService", () => {
           id: "2",
           name: "Jane Doe",
           email: "jane@example.com",
-          password_hash: "hashedpassword",
+          passwordHash: "hashedpassword",
           birthdate: new Date("1991-02-02"),
           students: [],
         },
@@ -112,7 +112,7 @@ describe("TrainerService", () => {
         id: "1",
         name: "John Doe",
         email: "john@example.com",
-        password_hash: "hashedpassword",
+        passwordHash: "hashedpassword",
         birthdate: new Date("1990-01-01"),
         students: [],
       };
@@ -145,7 +145,7 @@ describe("TrainerService", () => {
         id: "1",
         name: "Jane Doe",
         email: "john@example.com",
-        password_hash: "hashedpassword",
+        passwordHash: "hashedpassword",
         birthdate: new Date("1990-01-01"),
         students: [],
       };
@@ -170,7 +170,7 @@ describe("TrainerService", () => {
         id: "1",
         name: "John Doe",
         email: "john@example.com",
-        password_hash: "hashedpassword",
+        passwordHash: "hashedpassword",
         birthdate: new Date("1990-01-01"),
         students: [],
       };

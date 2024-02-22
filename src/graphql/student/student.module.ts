@@ -8,5 +8,6 @@ import { TrainerModule } from "../trainer/trainer.module";
 @Module({
   imports: [TypeOrmModule.forFeature([Student]), TrainerModule],
   providers: [StudentResolver, StudentService],
+  exports: [StudentService],
 })
 export class StudentModule {}

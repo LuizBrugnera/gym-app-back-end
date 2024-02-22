@@ -1,14 +1,11 @@
 import { ObjectType, Field, ID, registerEnumType } from "@nestjs/graphql";
 import { SexType } from "../../../common/enums/sex-type.enum";
 import { TrainerObject } from "../../trainer/object/trainer.object";
-/*
-import { StudentDataCheckObject } from "./student-data-check.object"; // Supondo que você criará um ObjectType para isso
-import { WorkoutObject } from "./workout.object"; // Supondo que você criará um ObjectType para isso
-import { DietObject } from "./diet.object"; // Supondo que você criará um ObjectType para isso
-import { FeedbackObject } from "./feedback.object"; // Supondo que você criará um ObjectType para isso
-import { SexType } from "../../common/enums/sex-type.enum";
+import { StudentDataCheckObject } from "../../student-data-check/object/student-data-check.object";
+import { FeedBackObject } from "../../feedback/object/feedback.object";
+import { DietObject } from "../../diet/object/diet.object";
+import { WorkoutObject } from "../../workout/object/workout.object";
 
-*/
 registerEnumType(SexType, {
   name: "SexType",
 });
@@ -33,17 +30,15 @@ export class StudentObject {
   @Field(() => TrainerObject)
   trainer: TrainerObject;
 
-  /*
-  @Field(() => [StudentDataCheckObject], { nullable: true }) // Ajuste conforme necessário
+  @Field(() => [StudentDataCheckObject], { nullable: true })
   studentDataChecks?: StudentDataCheckObject[];
 
-  @Field(() => [WorkoutObject], { nullable: true }) // Ajuste conforme necessário
+  @Field(() => [WorkoutObject], { nullable: true })
   workouts?: WorkoutObject[];
 
-  @Field(() => [DietObject], { nullable: true }) // Ajuste conforme necessário
+  @Field(() => [DietObject], { nullable: true })
   diets?: DietObject[];
 
-  @Field(() => [FeedbackObject], { nullable: true }) // Ajuste conforme necessário
-  feedbacks?: FeedbackObject[];
-*/
+  @Field(() => [FeedBackObject], { nullable: true })
+  feedbacks?: FeedBackObject[];
 }

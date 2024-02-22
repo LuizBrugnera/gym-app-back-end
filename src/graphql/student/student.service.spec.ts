@@ -175,7 +175,7 @@ describe("StudentService", () => {
 
   describe("remove", () => {
     it("should remove a student", async () => {
-      const student = { id: "1", name: "Student One" };
+      const student = { id: "1" };
       mockStudentRepository.findOneBy.mockResolvedValue(student);
       mockStudentRepository.delete.mockResolvedValue({ affected: 1 });
 

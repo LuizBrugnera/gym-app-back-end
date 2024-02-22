@@ -21,7 +21,7 @@ export class TrainerService {
     const trainer = this.trainerRepository.create({
       name: createTrainerInput.name,
       email: createTrainerInput.email,
-      password_hash: bcrypt.hashSync(createTrainerInput.password, 8),
+      passwordHash: bcrypt.hashSync(createTrainerInput.password, 8),
       birthdate: createTrainerInput.birthdate,
     });
 
@@ -63,11 +63,8 @@ export class TrainerService {
       throw new NotFoundException("Trainer not found");
     }
 
-    const deleted = await this.trainerRepository.delete(id);
+    await this.trainerRepository.remove(trainer);
 
-    if (deleted.affected === 1) {
-      return trainer;
-    }
-    throw new InternalServerErrorException("Trainer not deleted");
+    return { id };
   }
 }

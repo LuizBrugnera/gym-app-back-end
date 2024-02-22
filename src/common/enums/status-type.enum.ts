@@ -2,4 +2,5 @@ export enum StatusType {
   ACTIVE = "ACTIVE",
   COMPLETED = "COMPLETED",
   CANCELED = "CANCELED",
+  PLANNED = "PLANNED",
 }

@@ -34,20 +34,34 @@ export class StudentService {
       email: createStudentInput.email,
       birthdate: createStudentInput.birthdate,
       sex: createStudentInput.sex,
-      password_hash: bcrypt.hashSync(createStudentInput.password, 8),
+      passwordHash: bcrypt.hashSync(createStudentInput.password, 8),
     });
 
     return await this.studentRepository.save(student);
   }
 
   async findAll() {
-    return await this.studentRepository.find({ relations: ["trainer"] });
+    return await this.studentRepository.find({
+      relations: [
+        "trainer",
+        "studentDataChecks",
+        "workouts",
+        "diets",
+        "feedbacks",
+      ],
+    });
   }
 
   async findOneById(id: string) {
     const student = await this.studentRepository.findOne({
       where: { id: id },
-      relations: ["trainer"],
+      relations: [
+        "trainer",
+        "studentDataChecks",
+        "workouts",
+        "diets",
+        "feedbacks",
+      ],
     });
     if (!student) {
       throw new NotFoundException("Student not found");
@@ -60,6 +74,15 @@ export class StudentService {
 
     if (!student) {
       throw new NotFoundException("Student not found");
+    }
+
+    if (updateStudentInput.trainerId) {
+      const trainer = await this.trainerService.findOneById(
+        updateStudentInput.trainerId,
+      );
+      if (!trainer) {
+        throw new NotFoundException("Trainer not found");
+      }
     }
 
     const result = await this.studentRepository.update(id, updateStudentInput);
@@ -76,10 +99,8 @@ export class StudentService {
       throw new NotFoundException("Student not found");
     }
 
-    const deleted = await this.studentRepository.delete(id);
-    if (deleted.affected === 1) {
-      return student;
-    }
-    throw new InternalServerErrorException("Student not deleted");
+    await this.studentRepository.remove(student);
+
+    return { id };
   }
 }

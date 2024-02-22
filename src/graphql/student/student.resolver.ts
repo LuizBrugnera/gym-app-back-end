@@ -3,6 +3,7 @@ import { StudentService } from "./student.service";
 import { CreateStudentInput } from "./dto/create-student.input";
 import { UpdateStudentInput } from "./dto/update-student.input";
 import { StudentObject } from "./object/student.object";
+import { DeleteObject } from "../../common/objects/delete.object";
 
 @Resolver(() => StudentObject)
 export class StudentResolver {
@@ -20,7 +21,7 @@ export class StudentResolver {
     return this.studentService.findAll();
   }
 
-  @Query(() => StudentObject, { name: "student_by_id" })
+  @Query(() => StudentObject, { name: "studentById" })
   findOneById(@Args("id") id: string) {
     return this.studentService.findOneById(id);
   }
@@ -35,7 +36,7 @@ export class StudentResolver {
     );
   }
 
-  @Mutation(() => StudentObject)
+  @Mutation(() => DeleteObject)
   removeStudent(@Args("id") id: string) {
     return this.studentService.remove(id);
   }
