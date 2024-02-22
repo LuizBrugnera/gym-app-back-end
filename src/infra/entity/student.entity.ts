@@ -34,8 +34,8 @@ export class Student {
   @Column({ length: 255, unique: true })
   email: string;
 
-  @Column({ type: "char", length: 60 })
-  password_hash: string;
+  @Column({ name: "password_hash", type: "char", length: 60 })
+  passwordHash: string;
 
   @Column({ type: "date", transformer: new DateTransformer() })
   birthdate: Date;

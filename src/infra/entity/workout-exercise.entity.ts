@@ -33,11 +33,11 @@ export class WorkoutExercise {
   @JoinColumn({ name: "exercise_id" })
   exercise: Exercise;
 
-  @Column({ type: "int" })
-  sets: number;
+  @Column({ length: 255 })
+  sets: string;
 
-  @Column({ type: "interval" })
-  rest: any; // Interval
+  @Column({ type: "int" })
+  rest: number;
 
   @Column("text", { nullable: true })
   description: string | null;

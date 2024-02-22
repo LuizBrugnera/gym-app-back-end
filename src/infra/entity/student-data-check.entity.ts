@@ -34,8 +34,8 @@ export class StudentDataCheck {
   @Column({ type: "numeric" })
   bf: number; // Body fat
 
-  @Column({ type: "numeric", nullable: true })
-  body_density: number | null;
+  @Column({ name: "body_density", type: "numeric", nullable: true })
+  bodyDensity: number | null;
 
   @Column({ type: "numeric" })
   weight: number;

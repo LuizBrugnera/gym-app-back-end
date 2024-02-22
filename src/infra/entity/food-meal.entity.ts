@@ -7,6 +7,7 @@ import {
 } from "typeorm";
 import { Meal } from "./meal.entity";
 import { Food } from "./food.entity";
+import { MeasureType } from "../../common/enums/measure-type.enum";
 
 @Entity("food_meal")
 export class FoodMeal {
@@ -31,9 +32,9 @@ export class FoodMeal {
   @JoinColumn({ name: "food_id" })
   food: Food;
 
-  @Column({ type: "int" })
+  @Column({ type: "float" })
   quantity: number;
 
-  @Column({ length: 255 })
-  measure: string;
+  @Column({ type: "enum", enum: MeasureType })
+  measure: MeasureType;
 }

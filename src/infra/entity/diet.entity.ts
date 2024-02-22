@@ -33,11 +33,19 @@ export class Diet {
   @Column("text", { nullable: true })
   description: string | null;
 
-  @Column({ type: "date", transformer: new DateTransformer() })
-  date_start: Date;
+  @Column({
+    type: "date",
+    transformer: new DateTransformer(),
+    name: "date_start",
+  })
+  dateStart: Date;
 
-  @Column({ type: "date", transformer: new DateTransformer() })
-  date_end: Date;
+  @Column({
+    type: "date",
+    transformer: new DateTransformer(),
+    name: "date_end",
+  })
+  dateEnd: Date;
 
   @Column({
     type: "enum",
@@ -45,16 +53,16 @@ export class Diet {
   })
   status: StatusType;
 
-  @Column({ type: "int", nullable: true })
+  @Column({ type: "float", nullable: true })
   calories: number | null;
 
-  @Column({ type: "int", nullable: true })
+  @Column({ type: "float", nullable: true })
   fat: number | null;
 
-  @Column({ type: "int", nullable: true })
+  @Column({ type: "float", nullable: true })
   carbohydrates: number | null;
 
-  @Column({ type: "int", nullable: true })
+  @Column({ type: "float", nullable: true })
   protein: number | null;
 
   @OneToMany(() => Meal, (meal) => meal.diet, {

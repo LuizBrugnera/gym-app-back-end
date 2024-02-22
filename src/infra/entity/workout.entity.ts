@@ -33,11 +33,19 @@ export class Workout {
   @Column("text", { nullable: true })
   description: string | null;
 
-  @Column({ type: "date", transformer: new DateTransformer() })
-  date_start: Date;
+  @Column({
+    name: "date_start",
+    type: "date",
+    transformer: new DateTransformer(),
+  })
+  dateStart: Date;
 
-  @Column({ type: "date", transformer: new DateTransformer() })
-  date_end: Date;
+  @Column({
+    name: "date_end",
+    type: "date",
+    transformer: new DateTransformer(),
+  })
+  dateEnd: Date;
 
   @Column({
     type: "enum",

@@ -28,9 +28,9 @@ export class Feedback {
   @Column({ type: "date", transformer: new DateTransformer() })
   date: Date;
 
-  @Column({ length: 255, nullable: true })
-  image_url: string | null;
+  @Column({ length: 255, nullable: true, name: "image_url" })
+  imageUrl: string | null;
 
-  @Column({ length: 255, nullable: true })
-  video_url: string | null;
+  @Column({ length: 255, nullable: true, name: "video_url" })
+  videoUrl: string | null;
 }

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { FoodMeal } from "./food_meal.entity";
+import { FoodMeal } from "./food-meal.entity";
 
 @Entity("food")
 export class Food {
@@ -9,20 +9,20 @@ export class Food {
   @Column({ length: 255 })
   name: string;
 
-  @Column({ type: "int" })
+  @Column({ type: "float" })
   calories: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "float" })
   fat: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "float" })
   carbohydrates: number;
 
-  @Column({ type: "int" })
+  @Column({ type: "float" })
   protein: number;
 
-  @Column({ length: 255, nullable: true })
-  image_url: string | null;
+  @Column({ name: "image_url", length: 255, nullable: true })
+  imageUrl: string | null;
 
   @OneToMany(() => FoodMeal, (foodMeal) => foodMeal.food, {
     cascade: true,

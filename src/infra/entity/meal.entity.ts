@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { Diet } from "./diet.entity";
 import { MealTimeType } from "../../common/enums/meal-time-type.enum";
-import { FoodMeal } from "./food_meal.entity";
+import { FoodMeal } from "./food-meal.entity";
 
 @Entity("meal")
 export class Meal {
@@ -25,10 +25,11 @@ export class Meal {
   diet: Diet;
 
   @Column({
+    name: "eating_time",
     type: "enum",
     enum: MealTimeType,
   })
-  eating_time: MealTimeType;
+  eatingTime: MealTimeType;
 
   @OneToMany(() => FoodMeal, (foodMeal) => foodMeal.meal, {
     cascade: true,

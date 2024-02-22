@@ -14,11 +14,11 @@ export class Exercise {
   @Column("text", { nullable: true })
   description: string | null;
 
-  @Column({ length: 255, nullable: true })
-  video_url: string | null;
+  @Column({ length: 255, nullable: true, name: "video_url" })
+  videoUrl: string | null;
 
-  @Column({ length: 255, nullable: true })
-  image_url: string | null;
+  @Column({ length: 255, nullable: true, name: "image_url" })
+  imageUrl: string | null;
 
   @Column({
     type: "enum",
@@ -31,11 +31,12 @@ export class Exercise {
     type: "enum",
     enum: MuscleTargetType,
     nullable: false,
+    name: "muscle_target",
   })
-  muscle_target: MuscleTargetType;
+  muscleTarget: MuscleTargetType;
 
-  @Column({ type: "boolean" })
-  need_equipment: boolean;
+  @Column({ type: "boolean", name: "need_equipment" })
+  needEquipment: boolean;
 
   @OneToMany(
     () => WorkoutExercise,

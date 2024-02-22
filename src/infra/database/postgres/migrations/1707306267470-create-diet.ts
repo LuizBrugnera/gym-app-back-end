@@ -13,10 +13,10 @@ export class CreateDiet1707306267470 implements MigrationInterface {
                 "date_start" DATE NOT NULL,
                 "date_end" DATE NOT NULL,
                 "status" "diet_status_type_enum" NOT NULL,
-                "calories" INT,
-                "fat" INT,
-                "carbohydrates" INT,
-                "protein" INT,
+                "calories" FLOAT,
+                "fat" FLOAT,
+                "carbohydrates" FLOAT,
+                "protein" FLOAT,
                 CONSTRAINT "PK_diet_id" PRIMARY KEY ("id"),
                 CONSTRAINT "FK_diet_student_id" FOREIGN KEY ("student_id") REFERENCES "student"("id") ON DELETE CASCADE
             );
