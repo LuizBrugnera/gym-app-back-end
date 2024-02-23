@@ -20,11 +20,14 @@ export class StudentDataCheckObject {
   @Field()
   age: number;
 
-  @Field()
-  bf: number;
+  @Field({ nullable: true })
+  bf: number | null;
 
   @Field({ nullable: true })
   bodyDensity: number | null;
+
+  @Field({ nullable: true })
+  imc: number | null;
 
   @Field()
   weight: number;

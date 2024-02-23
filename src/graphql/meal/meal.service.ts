@@ -30,14 +30,14 @@ export class MealService {
 
   async findAll() {
     return await this.mealRepository.find({
-      relations: ["foodMeals", "foodMeals.food"],
+      relations: ["diet", "foodMeals", "foodMeals.food"],
     });
   }
 
   async findOneById(id: string) {
     const meal = await this.mealRepository.findOne({
       where: { id },
-      relations: ["foodMeals", "foodMeals.food"],
+      relations: ["diet", "foodMeals", "foodMeals.food"],
     });
 
     if (!meal) throw new NotFoundException("Meal not found");

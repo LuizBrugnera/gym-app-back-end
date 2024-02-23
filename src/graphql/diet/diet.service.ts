@@ -22,7 +22,13 @@ export class DietService {
     if (!student) throw new NotFoundException("Student not found");
 
     return await this.dietRepository.save(
-      this.dietRepository.create(createDietInput),
+      this.dietRepository.create({
+        ...createDietInput,
+        calories: 0,
+        fat: 0,
+        carbohydrates: 0,
+        protein: 0,
+      }),
     );
   }
 

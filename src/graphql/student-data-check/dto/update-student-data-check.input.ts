@@ -51,6 +51,9 @@ export class UpdateStudentDataCheckInput extends PartialType(
   @Field({ nullable: true })
   height?: number;
 
+  @Field({ nullable: true })
+  imc?: number | null;
+
   @Field()
   sex: SexType;
 }

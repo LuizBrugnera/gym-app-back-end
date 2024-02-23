@@ -9,6 +9,7 @@ import { StudentDataCheck } from "../../infra/entity/student-data-check.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { StudentService } from "../student/student.service";
+import { GymCalcules } from "../../common/helpers/gym-calcules.helper";
 
 @Injectable()
 export class StudentDataCheckService {
@@ -19,17 +20,82 @@ export class StudentDataCheckService {
   ) {}
 
   async create(createStudentDataCheckInput: CreateStudentDataCheckInput) {
-    const student = await this.studentService.findOneById(
-      createStudentDataCheckInput.studentId,
-    );
+    const {
+      studentId,
+      age,
+      bf,
+      date,
+      height,
+      sex,
+      weight,
+      abdominal,
+      axillary,
+      bodyDensity,
+      chest,
+      subscapular,
+      suprailiac,
+      thigh,
+      tricep,
+      imc,
+    } = createStudentDataCheckInput;
+    const student = await this.studentService.findOneById(studentId);
 
     if (!student) {
       throw new NotFoundException("Student Data Check Input not found");
     }
 
-    const studentDataCheck = this.studentDataCheckRepository.create(
-      createStudentDataCheckInput,
-    );
+    let newBf, newBodyDensity, newImc;
+
+    if (
+      chest &&
+      axillary &&
+      tricep &&
+      subscapular &&
+      abdominal &&
+      suprailiac &&
+      thigh &&
+      age &&
+      sex &&
+      !bf
+    ) {
+      newBodyDensity = GymCalcules.calculateBodyDensity({
+        chest,
+        axillary,
+        tricep,
+        subscapular,
+        abdominal,
+        suprailiac,
+        thigh,
+        age,
+        sex,
+      });
+
+      newBf = GymCalcules.calculateBodyFat(newBodyDensity);
+    }
+
+    if (imc) {
+      newImc = GymCalcules.calculateIMC({ weight, height });
+    }
+
+    const newCheck = {
+      studentId,
+      age,
+      bf: newBf || bf,
+      date,
+      height,
+      sex,
+      weight,
+      abdominal,
+      axillary,
+      bodyDensity: newBodyDensity || bodyDensity,
+      chest,
+      subscapular,
+      suprailiac,
+      thigh,
+      tricep,
+      imc: newImc || imc,
+    };
+    const studentDataCheck = this.studentDataCheckRepository.create(newCheck);
 
     return await this.studentDataCheckRepository.save(studentDataCheck);
   }

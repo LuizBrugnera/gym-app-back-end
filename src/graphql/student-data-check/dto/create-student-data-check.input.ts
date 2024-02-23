@@ -12,7 +12,7 @@ export class CreateStudentDataCheckInput {
   @Field(() => Int)
   age: number;
 
-  @Field()
+  @Field({ nullable: true })
   bf: number;
 
   @Field({ nullable: true })
@@ -41,6 +41,9 @@ export class CreateStudentDataCheckInput {
 
   @Field({ nullable: true })
   thigh?: number | null;
+
+  @Field({ nullable: true })
+  imc: number | null;
 
   @Field()
   height: number;
