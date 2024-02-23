@@ -10,7 +10,7 @@ export class CreateStudentDataCheck1707305474267 implements MigrationInterface {
                     "student_id" UUID,
                     "date" DATE NOT NULL,
                     "age" INT NOT NULL,
-                    "bf" NUMERIC NOT NULL,
+                    "bf" NUMERIC,
                     "body_density" NUMERIC,
                     "weight" NUMERIC NOT NULL,
                     "chest" NUMERIC,
