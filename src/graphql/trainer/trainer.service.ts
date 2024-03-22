@@ -67,4 +67,15 @@ export class TrainerService {
 
     return { id };
   }
+
+  async validateTrainer(email: string, pass: string): Promise<Trainer | null> {
+    const trainer = await this.trainerRepository.findOne({
+      where: { email: email },
+    });
+
+    if (trainer && bcrypt.compareSync(pass, trainer.passwordHash)) {
+      return trainer;
+    }
+    return null;
+  }
 }

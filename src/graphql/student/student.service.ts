@@ -103,4 +103,16 @@ export class StudentService {
 
     return { id };
   }
+
+  async validateStudent(email: string, pass: string): Promise<Student | null> {
+    const student = await this.studentRepository.findOne({
+      where: { email: email },
+    });
+
+    if (student && bcrypt.compareSync(pass, student.passwordHash)) {
+      return student;
+    }
+
+    return null;
+  }
 }

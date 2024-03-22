@@ -14,6 +14,7 @@ import { FoodModule } from "./graphql/food/food.module";
 import { DietModule } from "./graphql/diet/diet.module";
 import { MealModule } from "./graphql/meal/meal.module";
 import { FoodMealModule } from "./graphql/food-meal/food-meal.module";
+import { SecurityModule } from "./graphql/security/security.module";
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { FoodMealModule } from "./graphql/food-meal/food-meal.module";
     DietModule,
     MealModule,
     FoodMealModule,
+    SecurityModule,
   ],
   controllers: [],
   providers: [],
